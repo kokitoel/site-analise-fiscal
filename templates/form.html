@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simulador Fiscal - Formulário</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="theme-analytical">
+    <nav class="topnav">
+      <div class="container nav-inner">
+        <div class="brand">Simulador Fiscal</div>
+        <div class="nav-links">
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('simulador') }}" class="active">Simulador</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container page-sim">
+      <div class="card card-form">
+        <h2>Preencha os dados da simulação</h2>
+        <form action="{{ url_for('calcular') }}" method="post">
+          <div class="grid">
+            <label>Empresa<input name="empresa" type="text" placeholder="Nome da empresa"></label>
+            <label>Custo (R$)<input name="custo" type="number" step="0.01" value="0"></label>
+            <label>Alíquota Interna ICMS (%)<input name="aliquota_interna" type="number" step="0.01" value="18"></label>
+            <label>Alíquota Saída ICMS (%)<input name="aliquota_saida" type="number" step="0.01" value="18"></label>
+            <label>Média de Vendas (R$)<input name="media_vendas" type="number" step="0.01" value="0"></label>
+            <label>Compras Internas (R$)<input name="compras_internas" type="number" step="0.01" value="0"></label>
+            <label>Compras Interestaduais (R$)<input name="compras_interestaduais" type="number" step="0.01" value="0"></label>
+            <label>Valor Aluguel (R$)<input name="valor_aluguel" type="number" step="0.01" value="0"></label>
+            <label>Energia Elétrica (R$)<input name="energia_eletrica" type="number" step="0.01" value="0"></label>
+            <label>Outras Despesas (R$)<input name="outras_despesas" type="number" step="0.01" value="0"></label>
+            <label>Custo com Pessoal (R$)<input name="custo_pessoal" type="number" step="0.01" value="0"></label>
+            <label>Comissão (%)<input name="comissao_pct" type="number" step="0.01" value="0"></label>
+            <label>Frete (%)<input name="frete_pct" type="number" step="0.01" value="0"></label>
+            <label>Margem Desejada (%)<input name="margem_desejada_pct" type="number" step="0.01" value="0"></label>
+            <label>PIS (%)<input name="pis_pct" type="number" step="0.01" value="1.65"></label>
+            <label>COFINS (%)<input name="cofins_pct" type="number" step="0.01" value="7.6"></label>
+            <label>IPI (%)<input name="ipi_pct" type="number" step="0.01" value="0"></label>
+          </div>
+
+          <div class="checks">
+            <label><input type="checkbox" name="importado"> Produto Importado</label>
+            <label><input type="checkbox" name="st"> Substituição Tributária (ST)</label>
+            <label><input type="checkbox" name="monofasico"> Monofásico</label>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">Gerar Análise</button>
+            <a class="btn btn-secondary" href="{{ url_for('index') }}">Voltar</a>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>&copy; Simulador Fiscal</p>
+      </div>
+    </footer>
+  </body>
+</html>

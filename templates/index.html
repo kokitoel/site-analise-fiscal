@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulador Fiscal - Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-analytical">
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>Simulador Fiscal Inteligente</h1>
+      <p>Calcule margens, impostos e gere relatórios profissionais em PDF — baseado na sua planilha.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="{{ url_for('simulador') }}">Iniciar Análise</a>
+        <a class="btn btn-outline" href="#features">Ver Recursos</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="features" class="features">
+      <div class="cards">
+        <div class="card">
+          <h3>Automação de Cálculos</h3>
+          <p>ICMS, PIS, COFINS, IPI, ST — reproduzimos as fórmulas da sua planilha.</p>
+        </div>
+        <div class="card">
+          <h3>Relatórios em PDF</h3>
+          <p>PDFs profissionais prontos para apresentação ou auditoria.</p>
+        </div>
+        <div class="card">
+          <h3>Dashboard Intuitivo</h3>
+          <p>Resultado rápido com KPIs e resumo financeiro.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; Simulador Fiscal — Todos os direitos reservados</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resultado - Simulador Fiscal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-analytical">
+  <nav class="topnav">
+    <div class="container nav-inner">
+      <div class="brand">Simulador Fiscal</div>
+      <div class="nav-links">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('simulador') }}" class="active">Simulador</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container page-result">
+    <div class="kpi-row">
+      <div class="kpi card-kpi">
+        <div class="kpi-label">Lucro Líquido (R$)</div>
+        <div class="kpi-value">{{ resultado.lucro_liquido }}</div>
+      </div>
+      <div class="kpi card-kpi">
+        <div class="kpi-label">Margem Real (%)</div>
+        <div class="kpi-value">{{ resultado.margem_real_pct }}</div>
+      </div>
+      <div class="kpi card-kpi">
+        <div class="kpi-label">Tributos Totais (R$)</div>
+        <div class="kpi-value">{{ resultado.tributos_totais }}</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h3>Resumo Financeiro</h3>
+        <table class="table-main">
+          <thead>
+            <tr><th>Item</th><th>Valor (R$)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Venda Bruta</td><td>{{ resultado.venda_bruta }}</td></tr>
+            <tr><td>Compras Totais</td><td>{{ resultado.compras_total }}</td></tr>
+            <tr><td>Despesas Fixas</td><td>{{ resultado.despesas_fixas }}</td></tr>
+            <tr><td>Custo Pessoal</td><td>{{ resultado.custo_pessoal }}</td></tr>
+            <tr><td>Comissão</td><td>{{ resultado.comissao }}</td></tr>
+            <tr><td>Frete</td><td>{{ resultado.frete }}</td></tr>
+            <tr><td>Custo Total Operacional</td><td>{{ resultado.custo_total_operacional }}</td></tr>
+            <tr><td>ICMS Crédito</td><td>{{ resultado.icms_credito }}</td></tr>
+            <tr><td>ICMS Débito</td><td>{{ resultado.icms_debito }}</td></tr>
+            <tr><td>ICMS a Pagar</td><td>{{ resultado.icms_pagar }}</td></tr>
+            <tr><td>PIS</td><td>{{ resultado.pis }}</td></tr>
+            <tr><td>COFINS</td><td>{{ resultado.cofins }}</td></tr>
+            <tr><td>IPI</td><td>{{ resultado.ipi }}</td></tr>
+            <tr><td>ST (estimado)</td><td>{{ resultado.st }}</td></tr>
+            <tr class="highlight"><td>Tributos Totais</td><td>{{ resultado.tributos_totais }}</td></tr>
+            <tr class="success"><td>Lucro Líquido</td><td>{{ resultado.lucro_liquido }}</td></tr>
+            <tr><td>Margem Real (%)</td><td>{{ resultado.margem_real_pct }}</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="actions mt-3">
+      {% if pdf_path %}
+      <a class="btn btn-primary" href="{{ pdf_path }}">Baixar PDF</a>
+      {% endif %}
+      <a class="btn btn-secondary" href="{{ url_for('simulador') }}">Nova Simulação</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; Simulador Fiscal</p>
+    </div>
+  </footer>
+</body>
+</html>
